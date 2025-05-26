@@ -61,7 +61,8 @@ function agregarFila(parte, valor) {
   const contenedor = document.getElementById("categories");
 
   const fila = document.createElement("div");
-  fila.className = "row";
+  fila.className = "row click-area";
+  fila.onclick = () => actualizarParte(parte);
 
   const etiqueta = document.createElement("div");
   etiqueta.className = "label";
@@ -70,18 +71,13 @@ function agregarFila(parte, valor) {
   const resultado = document.createElement("div");
   resultado.className = "value";
   resultado.id = `valor-${parte}`;
-  resultado.textContent = valor;
-
-  const boton = document.createElement("button");
-  boton.textContent = "🔄";
-  boton.style.marginRight= "10px";
-  boton.onclick = () => actualizarParte(parte);
+  resultado.textContent = valor || "";
 
   fila.appendChild(etiqueta);
   fila.appendChild(resultado);
-  fila.appendChild(boton);
   contenedor.appendChild(fila);
 }
+
 
 // Solo muestra la estructura vacía al cargar
 window.onload = iniciarBestiario;
