@@ -1,6 +1,6 @@
 const partesDelCuerpo = [
   "Cuerpo", "Cabeza", "Orejas", "Ojos", "Nariz",
-  "Piernas", "Patas", "Cola", "Pelaje", "Color", "Extra"
+  "Piernas", "Cola", "Pelaje", "Color",
 ];
 
 const animales = [
@@ -74,7 +74,7 @@ function agregarFila(parte, valor) {
 
   const boton = document.createElement("button");
   boton.textContent = "🔄";
-  boton.style.marginLeft = "10px";
+  boton.style.marginRight= "10px";
   boton.onclick = () => actualizarParte(parte);
 
   fila.appendChild(etiqueta);
