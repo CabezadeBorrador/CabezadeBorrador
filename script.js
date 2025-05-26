@@ -4,7 +4,7 @@ const partesDelCuerpo = [
 ];
 
 const animales = [
-"Perro", "Gato", "Conejo", "Hámster", "Cobaya", "Hurón", "Canario", "Periquito", "Loro", "Pez dorado",
+  "Perro", "Gato", "Conejo", "Hámster", "Cobaya", "Hurón", "Canario", "Periquito", "Loro", "Pez dorado",
   "Pez betta", "Tortuga de agua", "Tortuga de tierra", "Gallo", "Gallina", "Pato", "Ganso", "Paloma", "Caballo", "Burro",
   "Cabra", "Oveja", "Vaca", "Cerdo", "Pavo", "Asno", "Gallina de Guinea", "Codorniz", "Zarigüeya",
   "León", "Tigre", "Elefante africano", "Elefante asiático", "Rinoceronte", "Hipopótamo", "Jirafa", "Cebra", "Búfalo africano",
@@ -33,16 +33,17 @@ const animales = [
   "Tortuga mediterránea", "Tortuga de bosque", "Caimán de anteojos", "Cocodrilo del Nilo", "Dragón de Komodo"
 ];
 
-// Objeto que guarda los resultados actuales
+// Estructura vacía al inicio
 let criatura = {};
 
-function generarAnimal() {
+// Inicializa la tabla vacía sin valores asignados
+function iniciarBestiario() {
   const contenedor = document.getElementById("categories");
   contenedor.innerHTML = "";
 
   partesDelCuerpo.forEach(parte => {
-    criatura[parte] = obtenerAleatorio();
-    agregarFila(parte, criatura[parte]);
+    criatura[parte] = "";
+    agregarFila(parte, "");
   });
 }
 
@@ -82,4 +83,5 @@ function agregarFila(parte, valor) {
   contenedor.appendChild(fila);
 }
 
-window.onload = generarAnimal;
+// Solo muestra la estructura vacía al cargar
+window.onload = iniciarBestiario;
