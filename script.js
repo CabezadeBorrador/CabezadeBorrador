@@ -33,29 +33,53 @@ const animales = [
   "Tortuga mediterránea", "Tortuga de bosque", "Caimán de anteojos", "Cocodrilo del Nilo", "Dragón de Komodo"
 ];
 
+// Objeto que guarda los resultados actuales
+let criatura = {};
+
 function generarAnimal() {
   const contenedor = document.getElementById("categories");
   contenedor.innerHTML = "";
 
   partesDelCuerpo.forEach(parte => {
-    const valor = animales[Math.floor(Math.random() * animales.length)];
-
-    const fila = document.createElement("div");
-    fila.className = "row";
-
-    const etiqueta = document.createElement("div");
-    etiqueta.className = "label";
-    etiqueta.textContent = parte;
-
-    const resultado = document.createElement("div");
-    resultado.className = "value";
-    resultado.textContent = valor;
-
-    fila.appendChild(etiqueta);
-    fila.appendChild(resultado);
-    contenedor.appendChild(fila);
+    criatura[parte] = obtenerAleatorio();
+    agregarFila(parte, criatura[parte]);
   });
 }
 
-// Generar al cargar la página
+function obtenerAleatorio() {
+  return animales[Math.floor(Math.random() * animales.length)];
+}
+
+function actualizarParte(parte) {
+  criatura[parte] = obtenerAleatorio();
+  const valorElemento = document.querySelector(`#valor-${parte}`);
+  if (valorElemento) valorElemento.textContent = criatura[parte];
+}
+
+function agregarFila(parte, valor) {
+  const contenedor = document.getElementById("categories");
+
+  const fila = document.createElement("div");
+  fila.className = "row";
+
+  const etiqueta = document.createElement("div");
+  etiqueta.className = "label";
+  etiqueta.textContent = parte;
+
+  const resultado = document.createElement("div");
+  resultado.className = "value";
+  resultado.id = `valor-${parte}`;
+  resultado.textContent = valor;
+
+  const boton = document.createElement("button");
+  boton.textContent = "🔄";
+  boton.style.marginLeft = "10px";
+  boton.onclick = () => actualizarParte(parte);
+
+  fila.appendChild(etiqueta);
+  fila.appendChild(resultado);
+  fila.appendChild(boton);
+  contenedor.appendChild(fila);
+}
+
 window.onload = generarAnimal;
