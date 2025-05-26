@@ -58,4 +58,4 @@ function generarAnimal() {
 }
 
 // Generar al cargar la página
-window.onload = Bestiario;
+window.onload = generarAnimal;
