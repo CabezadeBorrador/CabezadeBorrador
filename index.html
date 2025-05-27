@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bestiario</title>
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
@@ -14,11 +14,11 @@
 
     <div id="categories"></div>
 
-    <button id="btnDescargar" onclick="generarImagen()">📸 Descargar criatura</button>
+    <button id="btnDescargar" onclick="generarImagen()">📄 Descargar hoja para imprimir</button>
   </div>
 
   <!-- Contenedor oculto para exportar -->
-  <div id="resultadoFinal" class="imagen-descargable" style="display: none;"></div>
+  <div id="resultadoFinal" style="display: none;"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="script.js"></script>
