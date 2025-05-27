@@ -28,7 +28,16 @@ const animales = [
   "Camaleón pantera", "Camaleón velado", "Camaleón de Jackson", "Lagarto ocelado", "Lagarto monitor", "Lagartija ibérica",
   "Lagartija común", "Gecko leopardo", "Gecko tokay", "Salamandra común", "Tritón alpino", "Sapo común",
   "Rana de ojos rojos", "Tortuga de orejas rojas", "Tortuga mediterránea", "Tortuga de bosque", "Caimán de anteojos",
-  "Cocodrilo del Nilo", "Dragón de Komodo"
+  "Cocodrilo del Nilo", "Dragón de Komodo", "Tyrannosaurus rex", "Triceratops", "Velociraptor", "Brachiosaurus", "Stegosaurus",
+  "Spinosaurus", "Allosaurus", "Ankylosaurus", "Pachycephalosaurus", "Iguanodon",
+  "Parasaurolophus", "Dilophosaurus", "Carnotaurus", "Deinonychus", "Oviraptor",
+  "Therizinosaurus", "Styracosaurus", "Maiasaura", "Ceratosaurus", "Albertosaurus",
+  "Coelophysis", "Plateosaurus", "Gallimimus", "Muttaburrasaurus", "Microraptor",
+  "Compsognathus", "Herrerasaurus", "Mononykus", "Amargasaurus", "Dragón", "Grifo", "Fénix", "Quimera", "Minotauro", "Hidra", "Pegaso", "Centauro",
+"Sirena", "Kraken", "Basilisco", "Unicornio", "Mantícora", "Cíclope", "Troll",
+"Duende", "Hada", "Gnomo", "Esfinge", "Licántropo", "Gárgola", "Wendigo", "Yeti",
+"Naga", "Leviatán", "Chupacabras", "Jackalope", "Alseide",
+"Elemental de fuego", "Elemental de agua", "Dragón chino", "Dragón marino"
 ];
 
 let criatura = {};
