@@ -1,7 +1,5 @@
-/* FUENTE */
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-/* ESTRUCTURA GENERAL */
 body {
   background-color: #ffae00;
   font-family: 'Roboto', sans-serif;
@@ -16,7 +14,7 @@ body {
   margin: 0 auto;
   border-radius: 15px;
   padding: 30px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
 
 h1 {
@@ -30,7 +28,6 @@ h1 {
   font-style: italic;
 }
 
-/* FILAS INTERACTIVAS */
 .row {
   display: flex;
   align-items: center;
@@ -39,7 +36,7 @@ h1 {
   padding: 10px 15px;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
@@ -48,7 +45,6 @@ h1 {
   background-color: #fff3d4;
 }
 
-/* ETIQUETA IZQUIERDA */
 .label {
   background-color: #ffe58f;
   padding: 5px 10px;
@@ -59,7 +55,6 @@ h1 {
   flex-shrink: 0;
 }
 
-/* VALOR ALEATORIO */
 .value {
   font-family: monospace;
   font-size: 15px;
@@ -71,7 +66,6 @@ h1 {
   transition: font-weight 0.2s ease;
 }
 
-/* BOTÓN GENERAL (SI USAS ALGUNO ABAJO DEL TODO) */
 button {
   background-color: #ffd966;
   border: none;
@@ -87,7 +81,7 @@ button:hover {
   background-color: #ffb347;
 }
 
-/* EFECTO DE DESTELLO FINAL */
+/* Efecto de destello al generar parte */
 @keyframes flash {
   0%   { background-color: #fffbd1; }
   50%  { background-color: #ffe58f; }
@@ -96,4 +90,42 @@ button:hover {
 
 .value.flash {
   animation: flash 0.6s ease;
+}
+
+/* Imagen descargable */
+#resultadoFinal {
+  background-color: white;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  text-align: left;
+  padding: 20px;
+  border-radius: 10px;
+  width: 500px;
+  margin: 20px auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+#resultadoFinal h2 {
+  text-align: center;
+  margin-top: 0;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+#dibujo {
+  border: 2px dashed #ccc;
+  height: 200px;
+  margin: 20px auto;
+  background-color: #f8f8f8;
+}
+
+#resultadoFinal ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.descripcion {
+  margin-top: 15px;
+  font-style: italic;
+  padding: 0 10px;
 }
