@@ -34,10 +34,9 @@ const animales = [
   "Therizinosaurus", "Styracosaurus", "Maiasaura", "Ceratosaurus", "Albertosaurus",
   "Coelophysis", "Plateosaurus", "Gallimimus", "Muttaburrasaurus", "Microraptor",
   "Compsognathus", "Herrerasaurus", "Mononykus", "Amargasaurus", "Dragón", "Grifo", "Fénix", "Quimera", "Minotauro", "Hidra", "Pegaso", "Centauro",
-"Sirena", "Kraken", "Basilisco", "Unicornio", "Mantícora", "Cíclope", "Troll",
-"Duende", "Hada", "Gnomo", "Esfinge", "Licántropo", "Gárgola", "Wendigo", "Yeti",
-"Naga", "Leviatán", "Chupacabras", "Jackalope", "Alseide",
-"Elemental de fuego", "Elemental de agua", "Dragón chino", "Dragón marino"
+"Sirena", "Kraken", "Unicornio", "Cíclope", "Troll",
+"Duende", "Hada", "Gnomo", "Gárgola", "Yeti",
+ "Dragón chino", "Dragón marino"
 ];
 
 let criatura = {};
