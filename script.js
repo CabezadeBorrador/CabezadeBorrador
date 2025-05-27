@@ -1,6 +1,6 @@
 const partesDelCuerpo = [
   "Cuerpo", "Cabeza", "Orejas", "Ojos", "Nariz",
-  "Piernas", "Patas", "Cola", "Pelaje", "Color", "Extra"
+  "Patas", "Cola", "Pelaje", "Color"
 ];
 
 const animales = [
