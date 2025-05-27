@@ -32,11 +32,41 @@ const animales = [
 ];
 
 let criatura = {};
-partesDelCuerpo.forEach(parte => {
-  criatura[parte] = "";
-});
+
+function crearInterfaz() {
+  const contenedor = document.getElementById("categories");
+  partesDelCuerpo.forEach(parte => {
+    const row = document.createElement("div");
+    row.className = "row";
+    row.onclick = () => {
+      const aleatorio = animales[Math.floor(Math.random() * animales.length)];
+      criatura[parte] = aleatorio;
+      valor.textContent = aleatorio;
+      valor.style.fontWeight = "bold";
+    };
+
+    const etiqueta = document.createElement("div");
+    etiqueta.className = "label";
+    etiqueta.textContent = parte;
+
+    const valor = document.createElement("div");
+    valor.className = "value";
+    valor.textContent = "";
+
+    row.appendChild(etiqueta);
+    row.appendChild(valor);
+    contenedor.appendChild(row);
+  });
+}
 
 function generarImagen() {
+  partesDelCuerpo.forEach(parte => {
+    if (!criatura[parte]) {
+      const aleatorio = animales[Math.floor(Math.random() * animales.length)];
+      criatura[parte] = aleatorio;
+    }
+  });
+
   const contenedor = document.getElementById("resultadoFinal");
   contenedor.innerHTML = "";
 
@@ -56,14 +86,16 @@ function generarImagen() {
 
   const descripcion = document.createElement("p");
   descripcion.className = "descripcion";
-  let textoDescripcion = "Esta criatura tiene ";
+  let textoDescripcion = "Esta criatura tiene:\n";
   const partes = [];
+
   for (const parte of partesDelCuerpo) {
     if (criatura[parte]) {
-      partes.push(`${parte.toLowerCase()} de ${criatura[parte]}`);
+      partes.push(`• ${parte.toLowerCase()} de ${criatura[parte]}`);
     }
   }
-  textoDescripcion += partes.join(", ") + ".";
+
+  textoDescripcion += partes.join("\n") + ".";
   descripcion.textContent = textoDescripcion;
 
   contenedor.appendChild(titulo);
@@ -82,3 +114,7 @@ function generarImagen() {
     contenedor.style.display = "none";
   });
 }
+
+window.onload = () => {
+  crearInterfaz();
+};
