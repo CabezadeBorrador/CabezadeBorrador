@@ -70,8 +70,6 @@ function actualizarParte(parte) {
       const final = obtenerAleatorio();
       valorElemento.textContent = final;
       valorElemento.style.fontWeight = "bold";
-      valorElemento.classList.add("flash");
-
       criatura[parte] = final;
 
       setTimeout(() => {
@@ -102,7 +100,6 @@ function agregarFila(parte, valor) {
   contenedor.appendChild(fila);
 }
 
-// Nombre aleatorio tipo "Zorro Barbudo"
 function generarNombreCriatura() {
   const prefijos = ["Zorro", "Tigre", "Llama", "Mono", "Topo", "Dragón", "Garra", "Cola", "Pico", "Ojo"];
   const sufijos = ["cornudo", "luminoso", "explosivo", "saltón", "fantasma", "eléctrico", "barbudo", "camuflado"];
@@ -114,43 +111,35 @@ function generarImagen() {
   const contenedor = document.getElementById("resultadoFinal");
   contenedor.innerHTML = "";
 
-  const nombre = generarNombreCriatura();
+  const titulo = document.createElement("h1");
+  titulo.textContent = "BESTIARIO";
 
-  const titulo = document.createElement("h2");
-  titulo.textContent = nombre;
+  const subtitulo = document.createElement("p");
+  subtitulo.className = "autor";
+  subtitulo.textContent = "by Cabeza de Borrador";
+
+  const nombreLabel = document.createElement("p");
+  nombreLabel.className = "nombre-label";
+  nombreLabel.textContent = "Nombre de la criatura: " + generarNombreCriatura();
 
   const dibujo = document.createElement("div");
   dibujo.id = "dibujo";
 
-  const lista = document.createElement("ul");
-  let descripcion = "Esta criatura tiene ";
-
-  Object.entries(criatura).forEach(([parte, valor], index, array) => {
-    const item = document.createElement("li");
-    item.textContent = `${parte}: ${valor}`;
-    lista.appendChild(item);
-
-    if (valor) {
-      descripcion += `${parte.toLowerCase()} de ${valor}`;
-      if (index < array.length - 1) descripcion += ", ";
-      else descripcion += ".";
-    }
-  });
-
-  const texto = document.createElement("p");
-  texto.className = "descripcion";
-  texto.textContent = descripcion;
+  const footer = document.createElement("p");
+  footer.id = "footer";
+  footer.textContent = "Partes de la criatura: " + partesDelCuerpo.join(", ") + ".";
 
   contenedor.appendChild(titulo);
+  contenedor.appendChild(subtitulo);
+  contenedor.appendChild(nombreLabel);
   contenedor.appendChild(dibujo);
-  contenedor.appendChild(lista);
-  contenedor.appendChild(texto);
+  contenedor.appendChild(footer);
 
   contenedor.style.display = "block";
 
   html2canvas(contenedor).then(canvas => {
     const link = document.createElement("a");
-    link.download = `${nombre.replace(/\s/g, "_").toLowerCase()}.png`;
+    link.download = "bestiario.png";
     link.href = canvas.toDataURL();
     link.click();
     contenedor.style.display = "none";
