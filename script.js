@@ -72,6 +72,8 @@ function actualizarParte(parte) {
       valorElemento.style.fontWeight = "bold";
       valorElemento.classList.add("flash");
 
+      criatura[parte] = final;
+
       setTimeout(() => {
         valorElemento.classList.remove("flash");
       }, 600);
@@ -98,6 +100,61 @@ function agregarFila(parte, valor) {
   fila.appendChild(etiqueta);
   fila.appendChild(resultado);
   contenedor.appendChild(fila);
+}
+
+// Nombre aleatorio tipo "Zorro Barbudo"
+function generarNombreCriatura() {
+  const prefijos = ["Zorro", "Tigre", "Llama", "Mono", "Topo", "Dragón", "Garra", "Cola", "Pico", "Ojo"];
+  const sufijos = ["cornudo", "luminoso", "explosivo", "saltón", "fantasma", "eléctrico", "barbudo", "camuflado"];
+  const nombre = `${prefijos[Math.floor(Math.random() * prefijos.length)]} ${sufijos[Math.floor(Math.random() * sufijos.length)]}`;
+  return nombre;
+}
+
+function generarImagen() {
+  const contenedor = document.getElementById("resultadoFinal");
+  contenedor.innerHTML = "";
+
+  const nombre = generarNombreCriatura();
+
+  const titulo = document.createElement("h2");
+  titulo.textContent = nombre;
+
+  const dibujo = document.createElement("div");
+  dibujo.id = "dibujo";
+
+  const lista = document.createElement("ul");
+  let descripcion = "Esta criatura tiene ";
+
+  Object.entries(criatura).forEach(([parte, valor], index, array) => {
+    const item = document.createElement("li");
+    item.textContent = `${parte}: ${valor}`;
+    lista.appendChild(item);
+
+    if (valor) {
+      descripcion += `${parte.toLowerCase()} de ${valor}`;
+      if (index < array.length - 1) descripcion += ", ";
+      else descripcion += ".";
+    }
+  });
+
+  const texto = document.createElement("p");
+  texto.className = "descripcion";
+  texto.textContent = descripcion;
+
+  contenedor.appendChild(titulo);
+  contenedor.appendChild(dibujo);
+  contenedor.appendChild(lista);
+  contenedor.appendChild(texto);
+
+  contenedor.style.display = "block";
+
+  html2canvas(contenedor).then(canvas => {
+    const link = document.createElement("a");
+    link.download = `${nombre.replace(/\s/g, "_").toLowerCase()}.png`;
+    link.href = canvas.toDataURL();
+    link.click();
+    contenedor.style.display = "none";
+  });
 }
 
 window.onload = iniciarBestiario;
