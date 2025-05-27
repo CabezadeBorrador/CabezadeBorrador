@@ -1,6 +1,6 @@
 const partesDelCuerpo = [
   "Cuerpo", "Cabeza", "Orejas", "Ojos", "Nariz",
-  "Piernas", "Cola", "Pelaje", "Color",
+  "Piernas", "Patas", "Cola", "Pelaje", "Color", "Extra"
 ];
 
 const animales = [
@@ -33,10 +33,8 @@ const animales = [
   "Tortuga mediterránea", "Tortuga de bosque", "Caimán de anteojos", "Cocodrilo del Nilo", "Dragón de Komodo"
 ];
 
-// Estructura vacía al inicio
 let criatura = {};
 
-// Inicializa la tabla vacía sin valores asignados
 function iniciarBestiario() {
   const contenedor = document.getElementById("categories");
   contenedor.innerHTML = "";
@@ -52,16 +50,40 @@ function obtenerAleatorio() {
 }
 
 function actualizarParte(parte) {
-  criatura[parte] = obtenerAleatorio();
   const valorElemento = document.querySelector(`#valor-${parte}`);
-  if (valorElemento) valorElemento.textContent = criatura[parte];
+  if (!valorElemento) return;
+
+  let intervalo;
+  let conteo = 0;
+  const maxConteo = 15;
+  const delay = 50;
+
+  intervalo = setInterval(() => {
+    const aleatorio = obtenerAleatorio();
+    valorElemento.textContent = aleatorio;
+    valorElemento.style.fontWeight = "normal";
+    valorElemento.classList.remove("flash");
+    conteo++;
+
+    if (conteo >= maxConteo) {
+      clearInterval(intervalo);
+      const final = obtenerAleatorio();
+      valorElemento.textContent = final;
+      valorElemento.style.fontWeight = "bold";
+      valorElemento.classList.add("flash");
+
+      setTimeout(() => {
+        valorElemento.classList.remove("flash");
+      }, 600);
+    }
+  }, delay);
 }
 
 function agregarFila(parte, valor) {
   const contenedor = document.getElementById("categories");
 
   const fila = document.createElement("div");
-  fila.className = "row click-area";
+  fila.className = "row";
   fila.onclick = () => actualizarParte(parte);
 
   const etiqueta = document.createElement("div");
@@ -71,13 +93,11 @@ function agregarFila(parte, valor) {
   const resultado = document.createElement("div");
   resultado.className = "value";
   resultado.id = `valor-${parte}`;
-  resultado.textContent = valor || "";
+  resultado.textContent = valor;
 
   fila.appendChild(etiqueta);
   fila.appendChild(resultado);
   contenedor.appendChild(fila);
 }
 
-
-// Solo muestra la estructura vacía al cargar
 window.onload = iniciarBestiario;
