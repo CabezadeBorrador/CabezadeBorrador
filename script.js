@@ -95,16 +95,16 @@ function generarImagen() {
 
   const descripcion = document.createElement("p");
   descripcion.className = "descripcion";
-  let textoDescripcion = "Esta criatura tiene:\n";
+  let textoDescripcion = "Esta criatura tiene: ";
   const partes = [];
 
   for (const parte of partesDelCuerpo) {
     if (criatura[parte]) {
-      partes.push(`• ${parte.toLowerCase()} de ${criatura[parte]}`);
+      partes.push(`${parte.toLowerCase()} de ${criatura[parte]}`);
     }
   }
 
-  textoDescripcion += partes.join("\n") + ".";
+  textoDescripcion += partes.join(", ") + ".";
   descripcion.textContent = textoDescripcion;
 
   contenedor.appendChild(titulo);
