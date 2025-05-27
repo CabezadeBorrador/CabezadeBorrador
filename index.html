@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bestiario</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
     <h1>Bestiario</h1>
-    <p class="subtitle">~ by CabezaDeBorrador ~</p>
+    <p class="subtitle">~ por Iván ~</p>
 
     <div id="categories"></div>
 
-    <button onclick="generarAnimal()">🎲 Bestiario</button>
+    <button id="btnDescargar" onclick="generarImagen()">📸 Descargar criatura</button>
   </div>
+
+  <!-- Contenedor oculto para exportar -->
+  <div id="resultadoFinal" class="imagen-descargable" style="display: none;"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
