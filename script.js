@@ -1,8 +1,3 @@
-const partesDelCuerpo = [
-  "Cuerpo", "Cabeza", "Orejas", "Ojos", "Nariz",
-  "Patas", "Cola", "Pelaje", "Color"
-];
-
 const animales = [
   "Perro", "Gato", "Conejo", "Hámster", "Cobaya", "Hurón", "Canario", "Periquito", "Loro", "Pez dorado",
   "Pez betta", "Tortuga de agua", "Tortuga de tierra", "Gallo", "Gallina", "Pato", "Ganso", "Paloma", "Caballo", "Burro",
@@ -33,78 +28,10 @@ const animales = [
   "Tortuga mediterránea", "Tortuga de bosque", "Caimán de anteojos", "Cocodrilo del Nilo", "Dragón de Komodo"
 ];
 
-let criatura = {};
-
-function iniciarBestiario() {
-  const contenedor = document.getElementById("categories");
-  contenedor.innerHTML = "";
-
-  partesDelCuerpo.forEach(parte => {
-    criatura[parte] = "";
-    agregarFila(parte, "");
-  });
-}
-
-function obtenerAleatorio() {
-  return animales[Math.floor(Math.random() * animales.length)];
-}
-
-function actualizarParte(parte) {
-  const valorElemento = document.querySelector(`#valor-${parte}`);
-  if (!valorElemento) return;
-
-  let intervalo;
-  let conteo = 0;
-  const maxConteo = 15;
-  const delay = 50;
-
-  intervalo = setInterval(() => {
-    const aleatorio = obtenerAleatorio();
-    valorElemento.textContent = aleatorio;
-    valorElemento.style.fontWeight = "normal";
-    valorElemento.classList.remove("flash");
-    conteo++;
-
-    if (conteo >= maxConteo) {
-      clearInterval(intervalo);
-      const final = obtenerAleatorio();
-      valorElemento.textContent = final;
-      valorElemento.style.fontWeight = "bold";
-      criatura[parte] = final;
-
-      setTimeout(() => {
-        valorElemento.classList.remove("flash");
-      }, 600);
-    }
-  }, delay);
-}
-
-function agregarFila(parte, valor) {
-  const contenedor = document.getElementById("categories");
-
-  const fila = document.createElement("div");
-  fila.className = "row";
-  fila.onclick = () => actualizarParte(parte);
-
-  const etiqueta = document.createElement("div");
-  etiqueta.className = "label";
-  etiqueta.textContent = parte;
-
-  const resultado = document.createElement("div");
-  resultado.className = "value";
-  resultado.id = `valor-${parte}`;
-  resultado.textContent = valor;
-
-  fila.appendChild(etiqueta);
-  fila.appendChild(resultado);
-  contenedor.appendChild(fila);
-}
-
 function generarNombreCriatura() {
   const prefijos = ["Zorro", "Tigre", "Llama", "Mono", "Topo", "Dragón", "Garra", "Cola", "Pico", "Ojo"];
   const sufijos = ["cornudo", "luminoso", "explosivo", "saltón", "fantasma", "eléctrico", "barbudo", "camuflado"];
-  const nombre = `${prefijos[Math.floor(Math.random() * prefijos.length)]} ${sufijos[Math.floor(Math.random() * sufijos.length)]}`;
-  return nombre;
+  return `${prefijos[Math.floor(Math.random() * prefijos.length)]} ${sufijos[Math.floor(Math.random() * sufijos.length)]}`;
 }
 
 function generarImagen() {
@@ -120,20 +47,20 @@ function generarImagen() {
 
   const nombreLabel = document.createElement("p");
   nombreLabel.className = "nombre-label";
-  nombreLabel.textContent = "Nombre de la criatura: " + generarNombreCriatura();
+  nombreLabel.textContent = "Nombre de la criatura:";
+
+  const nombreCriatura = document.createElement("p");
+  nombreCriatura.className = "nombre-criatura";
+  nombreCriatura.textContent = generarNombreCriatura();
 
   const dibujo = document.createElement("div");
   dibujo.id = "dibujo";
 
-  const footer = document.createElement("p");
-  footer.id = "footer";
-  footer.textContent = "Partes de la criatura: " + partesDelCuerpo.join(", ") + ".";
-
   contenedor.appendChild(titulo);
   contenedor.appendChild(subtitulo);
   contenedor.appendChild(nombreLabel);
+  contenedor.appendChild(nombreCriatura);
   contenedor.appendChild(dibujo);
-  contenedor.appendChild(footer);
 
   contenedor.style.display = "block";
 
@@ -145,5 +72,3 @@ function generarImagen() {
     contenedor.style.display = "none";
   });
 }
-
-window.onload = iniciarBestiario;
