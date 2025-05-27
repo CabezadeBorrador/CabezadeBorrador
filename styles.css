@@ -41,6 +41,7 @@ button:hover {
   background-color: #ffb347;
 }
 
+/* Hoja carta imprimible */
 #resultadoFinal {
   width: 794px;
   height: 1123px;
@@ -72,13 +73,7 @@ button:hover {
 #resultadoFinal .nombre-label {
   font-weight: bold;
   font-size: 18px;
-  margin-bottom: 5px;
-}
-
-#resultadoFinal .nombre-criatura {
-  font-weight: bold;
-  font-size: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #dibujo {
@@ -87,4 +82,10 @@ button:hover {
   border: 2px solid black;
   border-radius: 10px;
   margin-top: 10px;
+}
+
+.descripcion {
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 20px;
 }
