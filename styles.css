@@ -26,6 +26,44 @@ h1 {
   font-style: italic;
 }
 
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 10px 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.row:hover {
+  background-color: #fff3d4;
+}
+
+.label {
+  background-color: #ffe58f;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  width: 120px;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+.value {
+  font-family: monospace;
+  font-size: 15px;
+  color: #444;
+  padding: 5px 10px;
+  flex-grow: 1;
+  text-align: left;
+  min-width: 100px;
+  transition: font-weight 0.2s ease;
+}
+
 button {
   background-color: #ffd966;
   border: none;
@@ -41,7 +79,6 @@ button:hover {
   background-color: #ffb347;
 }
 
-/* Hoja carta imprimible */
 #resultadoFinal {
   width: 794px;
   height: 1123px;
@@ -85,7 +122,9 @@ button:hover {
 }
 
 .descripcion {
+  white-space: pre-line;
   font-size: 14px;
   font-style: italic;
   margin-top: 20px;
+  line-height: 1.6;
 }
