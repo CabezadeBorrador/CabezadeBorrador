@@ -1,3 +1,7 @@
+/* FUENTE */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* ESTRUCTURA GENERAL */
 body {
   background-color: #ffae00;
   font-family: 'Roboto', sans-serif;
@@ -12,7 +16,7 @@ body {
   margin: 0 auto;
   border-radius: 15px;
   padding: 30px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -26,16 +30,25 @@ h1 {
   font-style: italic;
 }
 
+/* FILAS INTERACTIVAS */
 .row {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   margin: 10px 0;
-  padding: 10px;
+  padding: 10px 15px;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
+.row:hover {
+  background-color: #fff3d4;
+}
+
+/* ETIQUETA IZQUIERDA */
 .label {
   background-color: #ffe58f;
   padding: 5px 10px;
@@ -44,17 +57,21 @@ h1 {
   width: 120px;
   text-align: left;
   flex-shrink: 0;
-  
 }
 
+/* VALOR ALEATORIO */
 .value {
   font-family: monospace;
   font-size: 15px;
   color: #444;
   padding: 5px 10px;
   flex-grow: 1;
+  text-align: left;
+  min-width: 100px;
+  transition: font-weight 0.2s ease;
 }
 
+/* BOTÓN GENERAL (SI USAS ALGUNO ABAJO DEL TODO) */
 button {
   background-color: #ffd966;
   border: none;
@@ -63,9 +80,20 @@ button {
   font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: background-color 0.2s ease;
 }
 
 button:hover {
   background-color: #ffb347;
+}
+
+/* EFECTO DE DESTELLO FINAL */
+@keyframes flash {
+  0%   { background-color: #fffbd1; }
+  50%  { background-color: #ffe58f; }
+  100% { background-color: transparent; }
+}
+
+.value.flash {
+  animation: flash 0.6s ease;
 }
