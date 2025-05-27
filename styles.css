@@ -1,156 +1,90 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bestiario</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background-color: #ffae00;
-      font-family: 'Roboto', sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 40px;
-    }
+body {
+  background-color: #ffae00;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 40px;
+}
 
-    .container {
-      background-color: white;
-      max-width: 500px;
-      margin: 0 auto;
-      border-radius: 15px;
-      padding: 30px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
+.container {
+  background-color: white;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
 
-    h1 {
-      margin-top: 0;
-      font-size: 28px;
-    }
+h1 {
+  margin-top: 0;
+  font-size: 28px;
+}
 
-    .subtitle {
-      margin: 0 0 30px;
-      color: #555;
-      font-style: italic;
-    }
+.subtitle {
+  margin: 0 0 30px;
+  color: #555;
+  font-style: italic;
+}
 
-    .row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 10px 0;
-      padding: 10px 15px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
+button {
+  background-color: #ffd966;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
 
-    .row:hover {
-      background-color: #fff3d4;
-    }
+button:hover {
+  background-color: #ffb347;
+}
 
-    .label {
-      background-color: #ffe58f;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-weight: bold;
-      width: 120px;
-      text-align: left;
-      flex-shrink: 0;
-    }
+#resultadoFinal {
+  width: 794px;
+  height: 1123px;
+  background-color: white;
+  color: black;
+  padding: 40px 60px;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 
-    .value {
-      font-family: monospace;
-      font-size: 15px;
-      color: #444;
-      padding: 5px 10px;
-      flex-grow: 1;
-      text-align: left;
-      min-width: 100px;
-      transition: font-weight 0.2s ease;
-    }
+#resultadoFinal h1 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 0;
+}
 
-    button {
-      background-color: #ffd966;
-      border: none;
-      padding: 10px 20px;
-      margin-top: 20px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
+#resultadoFinal .autor {
+  text-align: center;
+  font-style: italic;
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
 
-    button:hover {
-      background-color: #ffb347;
-    }
+#resultadoFinal .nombre-label {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
 
-    #resultadoFinal {
-      width: 794px;
-      height: 1123px;
-      background-color: white;
-      color: black;
-      padding: 40px 60px;
-      font-family: 'Roboto', sans-serif;
-      box-sizing: border-box;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
+#resultadoFinal .nombre-criatura {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
 
-    #resultadoFinal h1 {
-      font-size: 36px;
-      text-align: center;
-      margin-bottom: 0;
-    }
-
-    #resultadoFinal .autor {
-      text-align: center;
-      font-style: italic;
-      font-size: 16px;
-      margin-top: 0;
-      margin-bottom: 30px;
-    }
-
-    #resultadoFinal .nombre-label {
-      font-weight: bold;
-      font-size: 18px;
-      margin-bottom: 5px;
-    }
-
-    #resultadoFinal .nombre-criatura {
-      font-weight: bold;
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
-
-    #dibujo {
-      width: 100%;
-      height: 780px;
-      border: 2px solid black;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Bestiario</h1>
-    <p class="subtitle">~ por Cabeza de Borrador ~</p>
-
-    <div id="categories"></div>
-
-    <button id="btnDescargar" onclick="generarImagen()">📄 Descargar hoja para imprimir</button>
-  </div>
-
-  <!-- Contenedor para la imagen exportable -->
-  <div id="resultadoFinal" style="display: none;"></div>
-
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <script src="script.js"></script>
-</body>
-</html>
+#dibujo {
+  width: 100%;
+  height: 780px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-top: 10px;
+}
